@@ -1,0 +1,19 @@
+{
+  "name": "near-memgame",
+  "version": "0.0.1",
+  "description": "Memory matching game on NEAR Protocol",
+  "scripts": {
+    "dev": "watch -d -n 1 'clear && yarn test'",
+    "test": "yarn asp -f unit.spec",
+    "clean": "rm -rf ./build && rm -rf ./neardev",
+    "build": "asb --target debug",
+    "build:release": "asb",
+    "asp": "asp --verbose --nologo"
+  },
+  "keywords": [],
+  "author": "canear.testnet",
+  "license": "ISC",
+  "devDependencies": {
+    "near-sdk-as": "^3.1.0"
+  }
+}

@@ -1,10 +1,10 @@
 export const TICKERS = [
     "BTC",
     "ETH",
-    "ADA",
-    "NEAR",
     "AVAX",
-    "DOT"
+    "SOL",
+    "ADA",
+    "NEAR"
 ]
 
 @nearBindgen

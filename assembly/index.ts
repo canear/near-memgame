@@ -5,6 +5,15 @@ import { TICKERS, Game } from './model'
 @nearBindgen
 export class Contract {
 
+    //VIEW METHODS
+    getGameInfo(player: string): Game {
+        let gameId = this.getGameIdOfPlayer(player)
+        let game = this.getGame(gameId)
+        return game
+    }
+    
+
+    //CHANGE METHODS
     makeMove(index: i32): void {
         //FIND GAME AND BOARD
         let gameId = this.getGameIdOfPlayer(context.sender)
@@ -42,19 +51,29 @@ export class Contract {
                 if (board[index] == game.lastCard) {
                     game.p1score = game.p1score + 1
                     logging.log("You get a score! " + game.p1score.toString())
+                    game.flips = 0
+                    game.lastCard = ""
+                    this.setGame(game.id, game)
+                    return
                 }
                 game.turn = "player2"
                 game.flips = 0
                 game.lastCard = ""
+                this.setGame(game.id, game)
             } else if (game.turn == "player2") {
                 logging.log("Your first flip: " + game.lastCard)
                 if (board[index] == game.lastCard) {
                     game.p2score = game.p2score + 1
                     logging.log("You get a score! " + game.p2score.toString())
+                    game.flips = 0
+                    game.lastCard = ""
+                    this.setGame(game.id, game)
+                    return
                 }
                 game.turn = "player1"
                 game.flips = 0
                 game.lastCard = ""
+                this.setGame(game.id, game)
             }
         }
 

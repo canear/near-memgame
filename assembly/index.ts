@@ -77,7 +77,6 @@ export class Contract {
             }
         }
 
-        //SAVE STATE (NECESSARY?)
         this.setGame(gameId, game)
     }
 
@@ -95,7 +94,6 @@ export class Contract {
         //LOGGING
         logging.log("Creating game with gameId: " + game.id.toString())
         logging.log("Setting player1 as: " + game.player1)
-        logging.log("Generating game board: " + game.board.toString())
 
         //CONFIUGURE STATE
         this.setGameIdOfPlayer(context.sender, lastId)
@@ -138,7 +136,6 @@ export class Contract {
     concedeGame(): void {
         let gameId = this.getGameIdOfPlayer(context.sender)
         if (gameId === 0) return
-        //TODO: GAME LOST LOGIC
         let game = this.getGame(gameId)
         game.active = false
         this.setGame(gameId, game)
@@ -185,7 +182,6 @@ export class Contract {
             let randomIndex = new RNG<u8>(1, cards.length).next()
             board.push(cards[randomIndex])
             cards.splice(randomIndex, 1)
-            //do not catch .splice as it returns spliced items
         }
         return board
     }

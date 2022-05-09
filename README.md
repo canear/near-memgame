@@ -25,10 +25,9 @@ bash ./scripts/dev-deploy.sh
 ```
 
 Your dev account will be shown on the console.
-Set environment variable CONTRACT to your dev account (works on Linux):
+Set environment variable CONTRACT to your dev account:
 ```
 export CONTRACT=<your-dev-account>
-
 ```
 
 Create a game:
